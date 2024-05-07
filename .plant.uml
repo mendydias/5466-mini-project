@@ -1,0 +1,82 @@
+
+@startuml
+@startchen
+
+entity Employee {
+    emp_id <<key>>
+    name
+    role
+}
+
+entity Address {
+    address_id <<key>>
+    house_num
+    street
+    country {
+        province
+        district
+        city
+    }
+}
+
+entity Telephone {
+    tel_id <<key>>
+    landline
+    whatsapp
+    number
+}
+
+entity Email {
+    email_id <<key>>
+    email
+}
+
+entity Department {
+    dept_id <<key>>
+    name
+}
+
+entity Project {
+    proj_id <<key>>
+    name
+    dept_id
+}
+
+relationship LIVES_AT {
+}
+
+relationship HAS_A {
+}
+
+relationship USES_A {
+}
+
+relationship WORKS_AT {
+}
+
+relationship WORKS_ON {
+}
+
+relationship LEADS {
+}
+
+Employee =N= LIVES_AT
+LIVES_AT =M= Address
+
+Employee =1= HAS_A
+HAS_A =N= Telephone
+
+Employee =1= USES_A
+USES_A =N= Email
+
+Employee =1= WORKS_AT
+WORKS_AT =N= Department
+
+Employee =1= LEADS
+LEADS =1= Department
+
+Department -N- WORKS_ON
+WORKS_ON =M= Project
+
+@endchen
+@enduml

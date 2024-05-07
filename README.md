@@ -46,20 +46,4 @@ This project concerns a basic employee management system. This is not production
 
 ## Entity Relationship Diagram
 
-@startuml
-@startchen
-
-entity Employee {
-
-}
-
-entity Department {
-
-}
-
-entity Project {
-
-}
-
-@endchen
-@enduml
+![ERD](./report/ERD.png)
