@@ -1,0 +1,251 @@
+id,code,name,phone,continent,currency
+1,AD,Andorra,376,Europe,EUR
+2,AE,United Arab Emirates,971,Asia,AED
+3,AF,Afghanistan,93,Asia,AFN
+4,AG,Antigua and Barbuda,1268,North America,XCD
+5,AI,Anguilla,1264,North America,XCD
+6,AL,Albania,355,Europe,ALL
+7,AM,Armenia,374,Asia,AMD
+8,AO,Angola,244,Africa,AOA
+9,AQ,Antarctica,672,Antarctica,noc
+10,AR,Argentina,54,South America,ARS
+11,AS,American Samoa,1684,Oceania,USD
+12,AT,Austria,43,Europe,EUR
+13,AU,Australia,61,Oceania,AUD
+14,AW,Aruba,297,North America,AWG
+15,AX,Aland,358,Europe,EUR
+16,AZ,Azerbaijan,994,Asia,AZN
+17,BA,Bosnia and Herzegovina,387,Europe,BAM
+18,BB,Barbados,1246,North America,BBD
+19,BD,Bangladesh,880,Asia,BDT
+20,BE,Belgium,32,Europe,EUR
+21,BF,Burkina Faso,226,Africa,XOF
+22,BG,Bulgaria,359,Europe,BGN
+23,BH,Bahrain,973,Asia,BHD
+24,BI,Burundi,257,Africa,BIF
+25,BJ,Benin,229,Africa,XOF
+26,BL,Saint Barthelemy,590,North America,EUR
+27,BM,Bermuda,1441,North America,BMD
+28,BN,Brunei,673,Asia,BND
+29,BO,Bolivia,591,South America,BOB
+30,BQ,Bonaire,5997,North America,USD
+31,BR,Brazil,55,South America,BRL
+32,BS,Bahamas,1242,North America,BSD
+33,BT,Bhutan,975,Asia,BTN
+34,BV,Bouvet Island,47,Antarctica,NOK
+35,BW,Botswana,267,Africa,BWP
+36,BY,Belarus,375,Europe,BYN
+37,BZ,Belize,501,North America,BZD
+38,CA,Canada,1,North America,CAD
+39,CC,Cocos (Keeling) Islands,61,Asia,AUD
+40,CD,Democratic Republic of the Congo,243,Africa,CDF
+41,CF,Central African Republic,236,Africa,XAF
+42,CG,Republic of the Congo,242,Africa,XAF
+43,CH,Switzerland,41,Europe,CHE
+44,CI,Ivory Coast,225,Africa,XOF
+45,CK,Cook Islands,682,Oceania,NZD
+46,CL,Chile,56,South America,CLF
+47,CM,Cameroon,237,Africa,XAF
+48,CN,China,86,Asia,CNY
+49,CO,Colombia,57,South America,COP
+50,CR,Costa Rica,506,North America,CRC
+51,CU,Cuba,53,North America,CUC
+52,CV,Cape Verde,238,Africa,CVE
+53,CW,Curacao,5999,North America,ANG
+54,CX,Christmas Island,61,Asia,AUD
+55,CY,Cyprus,357,Europe,EUR
+56,CZ,Czech Republic,420,Europe,CZK
+57,DE,Germany,49,Europe,EUR
+58,DJ,Djibouti,253,Africa,DJF
+59,DK,Denmark,45,Europe,DKK
+60,DM,Dominica,1767,North America,XCD
+61,DO,Dominican Republic,1809,North America,DOP
+62,DZ,Algeria,213,Africa,DZD
+63,EC,Ecuador,593,South America,USD
+64,EE,Estonia,372,Europe,EUR
+65,EG,Egypt,20,Africa,EGP
+66,EH,Western Sahara,212,Africa,MAD
+67,ER,Eritrea,291,Africa,ERN
+68,ES,Spain,34,Europe,EUR
+69,ET,Ethiopia,251,Africa,ETB
+70,FI,Finland,358,Europe,EUR
+71,FJ,Fiji,679,Oceania,FJD
+72,FK,Falkland Islands,500,South America,FKP
+73,FM,Micronesia,691,Oceania,USD
+74,FO,Faroe Islands,298,Europe,DKK
+75,FR,France,33,Europe,EUR
+76,GA,Gabon,241,Africa,XAF
+77,GB,United Kingdom,44,Europe,GBP
+78,GD,Grenada,1473,North America,XCD
+79,GE,Georgia,995,Asia,GEL
+80,GF,French Guiana,594,South America,EUR
+81,GG,Guernsey,44,Europe,GBP
+82,GH,Ghana,233,Africa,GHS
+83,GI,Gibraltar,350,Europe,GIP
+84,GL,Greenland,299,North America,DKK
+85,GM,Gambia,220,Africa,GMD
+86,GN,Guinea,224,Africa,GNF
+87,GP,Guadeloupe,590,North America,EUR
+88,GQ,Equatorial Guinea,240,Africa,XAF
+89,GR,Greece,30,Europe,EUR
+90,GS,South Georgia and the South Sandwich Islands,500,Antarctica,GBP
+91,GT,Guatemala,502,North America,GTQ
+92,GU,Guam,1671,Oceania,USD
+93,GW,Guinea-Bissau,245,Africa,XOF
+94,GY,Guyana,592,South America,GYD
+95,HK,Hong Kong,852,Asia,HKD
+96,HM,Heard Island and McDonald Islands,61,Antarctica,AUD
+97,HN,Honduras,504,North America,HNL
+98,HR,Croatia,385,Europe,EUR
+99,HT,Haiti,509,North America,USD
+100,HU,Hungary,36,Europe,HUF
+101,ID,Indonesia,62,Asia,IDR
+102,IE,Ireland,353,Europe,EUR
+103,IL,Israel,972,Asia,ILS
+104,IM,Isle of Man,44,Europe,GBP
+105,IN,India,91,Asia,INR
+106,IO,British Indian Ocean Territory,246,Asia,USD
+107,IQ,Iraq,964,Asia,IQD
+108,IR,Iran,98,Asia,IRR
+109,IS,Iceland,354,Europe,ISK
+110,IT,Italy,39,Europe,EUR
+111,JE,Jersey,44,Europe,GBP
+112,JM,Jamaica,1876,North America,JMD
+113,JO,Jordan,962,Asia,JOD
+114,JP,Japan,81,Asia,JPY
+115,KE,Kenya,254,Africa,KES
+116,KG,Kyrgyzstan,996,Asia,KGS
+117,KH,Cambodia,855,Asia,KHR
+118,KI,Kiribati,686,Oceania,AUD
+119,KM,Comoros,269,Africa,KMF
+120,KN,Saint Kitts and Nevis,1869,North America,XCD
+121,KP,North Korea,850,Asia,KPW
+122,KR,South Korea,82,Asia,KRW
+123,KW,Kuwait,965,Asia,KWD
+124,KY,Cayman Islands,1345,North America,KYD
+125,KZ,Kazakhstan,7,Asia,KZT
+126,LA,Laos,856,Asia,LAK
+127,LB,Lebanon,961,Asia,LBP
+128,LC,Saint Lucia,1758,North America,XCD
+129,LI,Liechtenstein,423,Europe,CHF
+130,LK,Sri Lanka,94,Asia,LKR
+131,LR,Liberia,231,Africa,LRD
+132,LS,Lesotho,266,Africa,LSL
+133,LT,Lithuania,370,Europe,EUR
+134,LU,Luxembourg,352,Europe,EUR
+135,LV,Latvia,371,Europe,EUR
+136,LY,Libya,218,Africa,LYD
+137,MA,Morocco,212,Africa,MAD
+138,MC,Monaco,377,Europe,EUR
+139,MD,Moldova,373,Europe,MDL
+140,ME,Montenegro,382,Europe,EUR
+141,MF,Saint Martin,590,North America,EUR
+142,MG,Madagascar,261,Africa,MGA
+143,MH,Marshall Islands,692,Oceania,USD
+144,MK,North Macedonia,389,Europe,MKD
+145,ML,Mali,223,Africa,XOF
+146,MM,Myanmar (Burma),95,Asia,MMK
+147,MN,Mongolia,976,Asia,MNT
+148,MO,Macao,853,Asia,MOP
+149,MP,Northern Mariana Islands,1670,Oceania,USD
+150,MQ,Martinique,596,North America,EUR
+151,MR,Mauritania,222,Africa,MRU
+152,MS,Montserrat,1664,North America,XCD
+153,MT,Malta,356,Europe,EUR
+154,MU,Mauritius,230,Africa,MUR
+155,MV,Maldives,960,Asia,MVR
+156,MW,Malawi,265,Africa,MWK
+157,MX,Mexico,52,North America,MXN
+158,MY,Malaysia,60,Asia,MYR
+159,MZ,Mozambique,258,Africa,MZN
+160,NA,Namibia,264,Africa,NAD
+161,NC,New Caledonia,687,Oceania,XPF
+162,NE,Niger,227,Africa,XOF
+163,NF,Norfolk Island,672,Oceania,AUD
+164,NG,Nigeria,234,Africa,NGN
+165,NI,Nicaragua,505,North America,NIO
+166,NL,Netherlands,31,Europe,EUR
+167,NO,Norway,47,Europe,NOK
+168,NP,Nepal,977,Asia,NPR
+169,NR,Nauru,674,Oceania,AUD
+170,NU,Niue,683,Oceania,NZD
+171,NZ,New Zealand,64,Oceania,NZD
+172,OM,Oman,968,Asia,OMR
+173,PA,Panama,507,North America,PAB
+174,PE,Peru,51,South America,PEN
+175,PF,French Polynesia,689,Oceania,XPF
+176,PG,Papua New Guinea,675,Oceania,PGK
+177,PH,Philippines,63,Asia,PHP
+178,PK,Pakistan,92,Asia,PKR
+179,PL,Poland,48,Europe,PLN
+180,PM,Saint Pierre and Miquelon,508,North America,EUR
+181,PN,Pitcairn Islands,64,Oceania,NZD
+182,PR,Puerto Rico,1787,North America,USD
+183,PS,Palestine,970,Asia,ILS
+184,PT,Portugal,351,Europe,EUR
+185,PW,Palau,680,Oceania,USD
+186,PY,Paraguay,595,South America,PYG
+187,QA,Qatar,974,Asia,QAR
+188,RE,Reunion,262,Africa,EUR
+189,RO,Romania,40,Europe,RON
+190,RS,Serbia,381,Europe,RSD
+191,RU,Russia,7,Asia,RUB
+192,RW,Rwanda,250,Africa,RWF
+193,SA,Saudi Arabia,966,Asia,SAR
+194,SB,Solomon Islands,677,Oceania,SBD
+195,SC,Seychelles,248,Africa,SCR
+196,SD,Sudan,249,Africa,SDG
+197,SE,Sweden,46,Europe,SEK
+198,SG,Singapore,65,Asia,SGD
+199,SH,Saint Helena,290,Africa,SHP
+200,SI,Slovenia,386,Europe,EUR
+201,SJ,Svalbard and Jan Mayen,4779,Europe,NOK
+202,SK,Slovakia,421,Europe,EUR
+203,SL,Sierra Leone,232,Africa,SLL
+204,SM,San Marino,378,Europe,EUR
+205,SN,Senegal,221,Africa,XOF
+206,SO,Somalia,252,Africa,SOS
+207,SR,Suriname,597,South America,SRD
+208,SS,South Sudan,211,Africa,SSP
+209,ST,Sao Tome and Principe,239,Africa,STN
+210,SV,El Salvador,503,North America,SVC
+211,SX,Sint Maarten,1721,North America,ANG
+212,SY,Syria,963,Asia,SYP
+213,SZ,Eswatini,268,Africa,SZL
+214,TC,Turks and Caicos Islands,1649,North America,USD
+215,TD,Chad,235,Africa,XAF
+216,TF,French Southern Territories,262,Antarctica,EUR
+217,TG,Togo,228,Africa,XOF
+218,TH,Thailand,66,Asia,THB
+219,TJ,Tajikistan,992,Asia,TJS
+220,TK,Tokelau,690,Oceania,NZD
+221,TL,East Timor,670,Oceania,USD
+222,TM,Turkmenistan,993,Asia,TMT
+223,TN,Tunisia,216,Africa,TND
+224,TO,Tonga,676,Oceania,TOP
+225,TR,Turkey,90,Asia,TRY
+226,TT,Trinidad and Tobago,1868,North America,TTD
+227,TV,Tuvalu,688,Oceania,AUD
+228,TW,Taiwan,886,Asia,TWD
+229,TZ,Tanzania,255,Africa,TZS
+230,UA,Ukraine,380,Europe,UAH
+231,UG,Uganda,256,Africa,UGX
+232,UM,U.S. Minor Outlying Islands,1,Oceania,USD
+233,US,United States,1,North America,USD
+234,UY,Uruguay,598,South America,UYI
+235,UZ,Uzbekistan,998,Asia,UZS
+236,VA,Vatican City,379,Europe,EUR
+237,VC,Saint Vincent and the Grenadines,1784,North America,XCD
+238,VE,Venezuela,58,South America,VES
+239,VG,British Virgin Islands,1284,North America,USD
+240,VI,U.S. Virgin Islands,1340,North America,USD
+241,VN,Vietnam,84,Asia,VND
+242,VU,Vanuatu,678,Oceania,VUV
+243,WF,Wallis and Futuna,681,Oceania,XPF
+244,WS,Samoa,685,Oceania,WST
+245,XK,Kosovo,383,Europe,EUR
+246,YE,Yemen,967,Asia,YER
+247,YT,Mayotte,262,Africa,EUR
+248,ZA,South Africa,27,Africa,ZAR
+249,ZM,Zambia,260,Africa,ZMW
+250,ZW,Zimbabwe,263,Africa,USD
