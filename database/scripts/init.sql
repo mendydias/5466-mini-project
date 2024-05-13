@@ -1,0 +1,14 @@
+USE Master;
+IF DB_ID(N'empdb') IS NOT NULL
+	DROP DATABASE empdb;
+GO
+
+CREATE DATABASE empdb;
+GO
+
+USE empdb;
+GO
+
+CREATE SCHEMA main;
+GO
+

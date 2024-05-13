@@ -43,6 +43,7 @@ entity Project {
 }
 
 relationship LIVES_AT {
+  date
 }
 
 relationship HAS_A {
@@ -55,9 +56,11 @@ relationship WORKS_AT {
 }
 
 relationship WORKS_ON {
+  date
 }
 
 relationship LEADS {
+  date
 }
 
 Employee =N= LIVES_AT
@@ -69,10 +72,10 @@ HAS_A =N= Telephone
 Employee =1= USES_A
 USES_A =N= Email
 
-Employee =1= WORKS_AT
-WORKS_AT =N= Department
+Employee =N= WORKS_AT
+WORKS_AT =1= Department
 
-Employee =1= LEADS
+Employee =N= LEADS
 LEADS =1= Department
 
 Department -N- WORKS_ON
