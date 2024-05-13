@@ -2612,4 +2612,83 @@ INSERT INTO main.dept_hods(hod, dept_id, date_appointed) VALUES
 (6, 5, '2023-05-07 16:40:00'),
 (9, 6, '2022-06-18 13:05:00'),
 (15, 7, '2024-07-31 08:55:00'),
-(14, 7, '2023-07-29 15:25:00');
+(14, 9, '2023-07-29 15:25:00');
+
+-- Basic Operations
+-- Register an employee and add said employee to a department
+BEGIN TRANSACTION;
+
+INSERT INTO main.employees(name, role, dept_id)
+VALUES ('Ranmal Dias', 'Mediator', 4);
+
+UPDATE main.dept_hods
+SET current_hod = 0
+WHERE hod = (SELECT TOP(1) hod FROM main.dept_hods WHERE dept_id = 4 ORDER BY date_appointed DESC);
+
+INSERT INTO main.dept_hods(hod, dept_id, date_appointed, current_hod)
+VALUES (16, 4, GETDATE(), 1);
+
+SELECT * FROM main.dept_hods;
+
+COMMIT;
+
+-- Deleting an employee and all their projects
+BEGIN TRANSACTION;
+
+DELETE FROM main.employees WHERE emp_id = 4;
+SELECT * FROM main.employees;
+
+COMMIT;
+
+-- Functions
+CREATE PROCEDURE main.register(@name varchar(255), @role varchar(255), @department bigint, @house_num varchar(50),
+                               @street varchar(255),
+                               @city_id bigint, @email varchar(150), @telephone bigint)
+    AS
+BEGIN
+    SET NOCOUNT ON
+BEGIN TRANSACTION;
+
+    -- save employee details
+INSERT INTO main.employees (name, role, dept_id) VALUES (@name, @role, @department);
+
+DECLARE @new_id bigint;
+SELECT @new_id = emp_id
+FROM main.employees
+WHERE name = @name;
+
+-- save address
+INSERT INTO main.addresses(house_num, street, city_id) VALUES (@house_num, @street, @city_id);
+DECLARE @new_address_id bigint;
+SELECT @new_address_id = address_id FROM main.addresses WHERE house_num = @house_num;
+
+-- link the two addresses
+INSERT INTO main.emp_addresses(emp_id, address_id) VALUES (@new_id, @new_address_id);
+
+-- save telephone number
+DECLARE @country_id bigint;
+SELECT @country_id = p.country_id
+FROM main.cities ci
+         INNER JOIN main.districts d ON ci.district_id = d.district_id
+         INNER JOIN main.provinces p on p.province_id = d.province_id
+WHERE ci.city_id = @city_id;
+INSERT INTO main.telephone(number, country_id, emp_id) VALUES (@telephone, @country_id, @new_id);
+
+-- save email address
+INSERT INTO main.emails (email, date_added, emp_id) VALUES (@email, GETDATE(), @new_id);
+COMMIT;
+
+END;
+GO
+
+-- Calculate working perio
+CREATE FUNCTION main.TENURE(@emp_id bigint)
+    RETURNS INT
+WITH EXECUTE AS CALLER
+    AS
+BEGIN
+    DECLARE @date DATETIME;
+SELECT @date = date_appointed FROM dept_hods WHERE hod = @emp_id;
+RETURN DATEDIFF(month, @date, GETDATE());
+END
+GO
