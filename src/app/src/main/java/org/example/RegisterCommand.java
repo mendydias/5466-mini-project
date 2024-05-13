@@ -2,9 +2,6 @@ package org.example;
 
 import java.util.Scanner;
 
-/**
- * RegisterCommand
- */
 public class RegisterCommand implements Command {
     private EmployeeDTO employee;
 
