@@ -34,17 +34,30 @@ public class DbService {
 
     public String calculateTenure(Long empId) {
         try (Connection conn = DriverManager.getConnection(URL, USER, PASS)) {
-            String result = "";
+            StringBuilder output = new StringBuilder();
+            try (PreparedStatement stmt = conn.prepareStatement("SELECT name FROM main.employees WHERE emp_id = ?")) {
+                stmt.setLong(1, empId);
+                try (ResultSet results = stmt.executeQuery()) {
+                    while (results.next()) {
+                        output.append("For employee: " + results.getString("name") + "\n");
+                    }
+                }
+            }
             String tenureFunc = "SELECT main.TENURE(?) as tenure;";
             try (PreparedStatement stmt = conn.prepareStatement(tenureFunc)) {
                 stmt.setLong(1, empId);
                 try (ResultSet results = stmt.executeQuery()) {
                     while (results.next()) {
-                        result += results.getInt("tenure");
+                        int months = results.getInt("tenure");
+                        if (months == 1) {
+                            output.append(months + " month as head of department.");
+                        } else {
+                            output.append(months + " months as head of department.");
+                        }
                     }
                 }
             }
-            return result.equals("1") ? result + " month" : result + " months";
+            return output.toString();
         } catch (SQLException sqe) {
             sqe.printStackTrace();
             return "-1";
@@ -65,5 +78,75 @@ public class DbService {
             sqe.printStackTrace();
         }
         return departments;
+    }
+
+    public List<CountryDTO> getAllCountries() {
+        var countries = new ArrayList<CountryDTO>();
+        try (Connection conn = DriverManager.getConnection(URL, USER, PASS)) {
+            try (PreparedStatement stmt = conn.prepareStatement("SELECT country_id, name FROM main.countries;")) {
+                try (ResultSet results = stmt.executeQuery()) {
+                    while (results.next()) {
+                        countries.add(new CountryDTO(results.getLong("country_id"), results.getString("name")));
+                    }
+                }
+            }
+        } catch (SQLException sq) {
+            sq.printStackTrace();
+        }
+        return countries;
+    }
+
+    public List<ProvinceDTO> getProvincesFor(Long countryId) {
+        var provinces = new ArrayList<ProvinceDTO>();
+        try (Connection conn = DriverManager.getConnection(URL, USER, PASS)) {
+            try (PreparedStatement stmt = conn
+                    .prepareStatement("SELECT province_id, name_en FROM main.provinces WHERE country_id = ?")) {
+                stmt.setLong(1, countryId);
+                try (ResultSet results = stmt.executeQuery()) {
+                    while (results.next()) {
+                        provinces.add(new ProvinceDTO(results.getLong("province_id"), results.getString("name_en")));
+                    }
+                }
+            }
+        } catch (SQLException sq) {
+            sq.printStackTrace();
+        }
+        return provinces;
+    }
+
+    public List<DistrictDTO> getDistrictsFor(Long provinceId) {
+        var districts = new ArrayList<DistrictDTO>();
+        try (Connection conn = DriverManager.getConnection(URL, USER, PASS)) {
+            try (PreparedStatement stmt = conn
+                    .prepareStatement("SELECT district_id, name_en FROM main.districts WHERE province_id = ?")) {
+                stmt.setLong(1, provinceId);
+                try (ResultSet results = stmt.executeQuery()) {
+                    while (results.next()) {
+                        districts.add(new DistrictDTO(results.getLong("district_id"), results.getString("name_en")));
+                    }
+                }
+            }
+        } catch (SQLException sq) {
+            sq.printStackTrace();
+        }
+        return districts;
+    }
+
+    public List<CityDTO> getCitiesFor(Long districtId) {
+        var cities = new ArrayList<CityDTO>();
+        try (Connection conn = DriverManager.getConnection(URL, USER, PASS)) {
+            try (PreparedStatement stmt = conn
+                    .prepareStatement("SELECT city_id, name_en FROM main.cities WHERE district_id = ?")) {
+                stmt.setLong(1, districtId);
+                try (ResultSet results = stmt.executeQuery()) {
+                    while (results.next()) {
+                        cities.add(new CityDTO(results.getLong("city_id"), results.getString("name_en")));
+                    }
+                }
+            }
+        } catch (SQLException sq) {
+            sq.printStackTrace();
+        }
+        return cities;
     }
 }
