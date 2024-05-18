@@ -20,6 +20,9 @@ public class RegisterCommand implements Command {
         String role = input.nextLine();
         System.out.println("Department id:");
         Long dept = Long.parseLong(input.nextLine());
+        if (dept == -1) {
+            service.
+        }
         System.out.println("House number:");
         String houseNum = input.nextLine();
         System.out.println("Street:");

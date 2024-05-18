@@ -8,18 +8,36 @@
 USE empdb;
 GO
 
-INSERT INTO main.provinces ("province_id", "name_en", "name_si", "name_ta", "country_id") VALUES
-(1, 'Western', 'බස්නාහිර', 'மேல்', '130'),
-(2, 'Central', 'මධ්‍යම', 'மத்திய', '130'),
-(3, 'Southern', 'දකුණු', 'தென்', '130'),
-(4, 'North Western', 'වයඹ', 'வட மேல்', '130'),
-(5, 'Sabaragamuwa', 'සබරගමුව', 'சபரகமுவ', '130'),
-(6, 'Eastern', 'නැගෙනහිර', 'கிழக்கு', '130'),
-(7, 'Uva', 'ඌව', 'ஊவா', '130'),
-(8, 'North Central', 'උතුරු මැද', 'வட மத்திய', '130'),
-(9, 'Northern', 'උතුරු', 'வட', '130');
+INSERT INTO main.countries
+SELECT *
+FROM OPENROWSET (
+	BULK N'/scripts/countries.csv',
+	FORMAT='CSV',
+	FIRSTROW=2
+)
+WITH (
+    country_id bigint,
+    code varchar(5),
+    name varchar(255),
+    phone int,
+    continent varchar(150),
+    currency varchar(20)
+) as countries_csv;
+GO
 
-INSERT INTO main.districts ("district_id", "province_id", "name_en", "name_si", "name_ta") VALUES
+INSERT INTO main.provinces (province_id, name_en, name_si, name_ta, country_id) VALUES
+(1, 'Western', 'බස්නාහිර', 'மேல்', 130),
+(2, 'Central', 'මධ්‍යම', 'மத்திய', 130),
+(3, 'Southern', 'දකුණු', 'தென்', 130),
+(4, 'North Western', 'වයඹ', 'வட மேல்', 130),
+(5, 'Sabaragamuwa', 'සබරගමුව', 'சபரகமுவ', 130),
+(6, 'Eastern', 'නැගෙනහිර', 'கிழக்கு', 130),
+(7, 'Uva', 'ඌව', 'ஊவா', 130),
+(8, 'North Central', 'උතුරු මැද', 'வட மத்திய', 130),
+(9, 'Northern', 'උතුරු', 'வட', 130);
+GO
+
+INSERT INTO main.districts (district_id, province_id, name_en, name_si, name_ta) VALUES
 (1, 6, 'Ampara', 'අම්පාර', 'அம்பாறை'),
 (2, 8, 'Anuradhapura', 'අනුරාධපුරය', 'அனுராதபுரம்'),
 (3, 7, 'Badulla', 'බදුල්ල', 'பதுளை'),
@@ -45,8 +63,9 @@ INSERT INTO main.districts ("district_id", "province_id", "name_en", "name_si", 
 (23, 5, 'Ratnapura', 'රත්නපුර', 'இரத்தினபுரி'),
 (24, 6, 'Trincomalee', 'ත්‍රිකුණාමලය', 'திருகோணமலை'),
 (25, 9, 'Vavuniya', 'වව්නියාව', 'வவுனியா');
+GO
 
-INSERT INTO main.cities ("city_id", "district_id", "name_en", "name_si", "name_ta", "subname_en", "subname_si", "subname_ta", "postcode", "latitude", "longitude") VALUES
+INSERT INTO main.cities (city_id, district_id, name_en, name_si, name_ta, subname_en, subname_si, subname_ta, postcode, latitude, longitude) VALUES
 (1, 1, 'Akkaraipattu', 'අක්කරපත්තුව', 'அக்கரைப்பற்று', NULL, NULL, NULL, '32400', '7.21842790', '81.85411610'),
 (2, 1, 'Ambagahawatta', 'අඹගහවත්ත', 'அம்பகஹவத்த', NULL, NULL, NULL, '90326', '7.30175630', '81.67472950'),
 (3, 1, 'Ampara', 'අම්පාර', 'அம்பாறை', NULL, NULL, NULL, '32000', '7.30175630', '81.67472950'),
@@ -1047,8 +1066,9 @@ INSERT INTO main.cities ("city_id", "district_id", "name_en", "name_si", "name_t
 (998, 12, 'Rukmale', 'රුක්මලේ', 'ருக்மலே', NULL, NULL, NULL, '11129', '6.85246830', '79.98034150'),
 (999, 12, 'Ruwanwella', 'රුවන්වැල්ල', 'ருவன்வெல்ல', NULL, NULL, NULL, '71300', '7.04587350', '80.25370630'),
 (1000, 12, 'Samanalawewa', 'සමනලවැව', 'சமனலவெவ', NULL, NULL, NULL, '70142', '6.67500500', '80.78655580');
+GO
 
-INSERT INTO main.cities ("city_id", "district_id", "name_en", "name_si", "name_ta", "subname_en", "subname_si", "subname_ta", "postcode", "latitude", "longitude") VALUES
+INSERT INTO main.cities (city_id, district_id, name_en, name_si, name_ta, subname_en, subname_si, subname_ta, postcode, latitude, longitude) VALUES
 (1001, 12, 'Seaforth Colony', 'සීෆෝර්ත් ජනපදය', 'சீஃபோர்த் காலனி', NULL, NULL, NULL, '71708', '7.25133170', '80.34637540'),
 (1002, 5, 'Colombo 2', 'කොළඹ 2', 'கொழும்பு 2', 'Slave Island', 'කොම්පඤ්ඤ වීදිය', 'கொம்பனித்தெரு', '00200', '6.91993310', '79.85402740'),
 (1003, 12, 'Spring Valley', 'වසන්ත නිම්නය', 'வசந்த பள்ளத்தாக்கு', NULL, NULL, NULL, '90028', '7.25133170', '80.34637540'),
@@ -2026,8 +2046,9 @@ INSERT INTO main.cities ("city_id", "district_id", "name_en", "name_si", "name_t
 (1997, 9, 'Karaveddi', 'කරවෙඩ්ඩි', 'கரவெட்டி', NULL, NULL, NULL, '40520', '9.80006730', '80.19941820'),
 (1998, 9, 'Kayts', 'කයිට්ස්', 'ஊர்காவற்துறை', NULL, NULL, NULL, '40270', '9.69789370', '79.86048310'),
 (1999, 9, 'Kodikamam', 'කොඩිකාමම්', 'கொடிகாமம்', NULL, NULL, NULL, '40700', '9.68449040', '80.22201770');
+GO
 
-INSERT INTO main.cities ("city_id", "district_id", "name_en", "name_si", "name_ta", "subname_en", "subname_si", "subname_ta", "postcode", "latitude", "longitude") VALUES
+INSERT INTO main.cities (city_id, district_id, name_en, name_si, name_ta, subname_en, subname_si, subname_ta, postcode, latitude, longitude) VALUES
 (2000, 9, 'Kokuvil', 'කොකුවිල්', 'கொக்குவில்', NULL, NULL, NULL, '40060', '9.69082400', '80.02114300'),
 (2001, 9, 'Kondavil', 'කොන්ඩාවිල්', 'கோண்டாவில்', NULL, NULL, NULL, '40062', '9.70300070', '80.03393120'),
 (2002, 9, 'Kopay', 'කෝපායි', 'கோப்பாய்', NULL, NULL, NULL, '40170', '9.70430280', '80.07863590'),
@@ -2206,6 +2227,7 @@ INSERT INTO main.cities ("city_id", "district_id", "name_en", "name_si", "name_t
 (2211, 15, 'Veppankulam', 'වෙප්පන්කුලම්', 'வேப்பங்குளம்', NULL, NULL, NULL, NULL, '8.78602730', '80.01436560'),
 (2212, 15, 'Vidataltivu', 'විඩතලතිව්', 'விடத்தல்தீவு', NULL, NULL, NULL, NULL, '9.02154990', '80.05086310'),
 (2213, 7, 'Mabola', 'මාබෝල', 'மாபோலா', NULL, NULL, NULL, '11104', '7.0062833', '79.8924828');
+GO
 
 -- Insert sample data to strong and weak entities
 -- Sample data for main.departments
@@ -2220,6 +2242,7 @@ VALUES
 ('Information Technology'),
 ('Operations'),
 ('Quality Assurance');
+GO
 
 -- Sample data for main.employees
 INSERT INTO main.employees (name, role, dept_id)
@@ -2239,6 +2262,7 @@ VALUES
 ('Lahiru Pathirana', 'Programmer', 8),
 ('Shalini Mendis', 'Administrator', 9),
 ('Sachith Perera', 'Support', 7);
+GO
 
 -- Sample data for main.addresses
 INSERT INTO main.addresses (house_num, street, city_id)
@@ -2257,6 +2281,7 @@ VALUES
 ('111', 'Ratnapura Crescent', 1101),
 ('222', 'Kurunegala Lane', 769),
 ('333', 'Hambantota Road', 305);
+GO
 
 -- Sample data for main.emp_addresses
 INSERT INTO main.emp_addresses (emp_id, address_id, date)
@@ -2276,6 +2301,7 @@ VALUES
 (13, 12, '2023-01-13 13:15:00'),
 (14, 13, '2024-02-14 14:30:00'),
 (15, 14, '2022-03-15 08:45:00');
+GO
 
 -- Sample data for main.telephone
 INSERT INTO main.telephone (number, landline, whatsapp, country_id, emp_id)
@@ -2295,6 +2321,7 @@ VALUES
 (4567890123, 1, 1, 130, 13),
 (5678901234, 1, 0, 130, 14),
 (6789012345, 1, 1, 130, 15);
+GO
 
 -- Sample data for main.emails
 INSERT INTO main.emails (email, emp_id)
@@ -2314,6 +2341,7 @@ VALUES
 ('lahiru.pathirana@ousl.lk', 13),
 ('shalini.mendis@ousl.lk', 14),
 ('sachith.perera@ousl.lk', 15);
+GO
 
 -- Sample data for main.projects
 INSERT INTO main.projects (name)
@@ -2333,6 +2361,7 @@ VALUES
 ('Project M'),
 ('Project N'),
 ('Project O');
+GO
 
 INSERT INTO main.project_assignments(proj_id, dept_id, date_assigned) VALUES
 (11, 5, '2022-03-15 10:25:00'),
@@ -2355,6 +2384,7 @@ INSERT INTO main.project_assignments(proj_id, dept_id, date_assigned) VALUES
 (2, 7, '2039-01-28 23:50:00'),
 (8, 3, '2040-08-03 10:05:00'),
 (12, 2, '2041-11-26 12:20:00');
+GO
 
 INSERT INTO main.dept_hods(hod, dept_id, date_appointed) VALUES
 (11, 8, '2023-11-15 14:30:00'),
@@ -2366,3 +2396,4 @@ INSERT INTO main.dept_hods(hod, dept_id, date_appointed) VALUES
 (9, 6, '2022-06-18 13:05:00'),
 (15, 7, '2024-07-31 08:55:00'),
 (14, 7, '2023-07-29 15:25:00');
+GO
