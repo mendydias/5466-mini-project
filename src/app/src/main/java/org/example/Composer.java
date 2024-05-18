@@ -21,6 +21,7 @@ public class Composer {
     private final AppState state = new AppState();
 
     public Composer() {
+        CMD.put("list", new ListEmployeesCommand(new DbService()));
         CMD.put("register", new RegisterCommand(new DbService()));
         CMD.put("calcTenure", new CalculateTenureCommand(new DbService()));
         CMD.put("quit", new QuitCommand(() -> state.stop()));

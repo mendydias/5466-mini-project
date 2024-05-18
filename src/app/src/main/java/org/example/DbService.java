@@ -178,4 +178,21 @@ public class DbService {
         }
         return hods;
     }
+    
+    public List<EmployeeDTO> getAllEmployees() {
+        var employees = new ArrayList<EmployeeDTO>();
+        try(Connection conn = DriverManager.getConnection(URL, USER, PASS)) {
+            String sql = "SELECT e.name as name, e.role as role, em.email as email FROM main.employees e JOIN main.emails em ON e.emp_id = em.emp_id;";
+            try (PreparedStatement stmt = conn.prepareStatement(sql)) {
+                try (ResultSet results = stmt.executeQuery()) {
+                    while(results.next()) {
+                        employees.add(new EmployeeDTO(results.getString("name"), results.getString("role"), -1L, "", "", -1L, results.getString("email"), -1L));
+                    }
+                }
+            }
+        } catch(SQLException sq) {
+            sq.printStackTrace();
+        }
+        return employees;
+    }
 }
