@@ -9,11 +9,24 @@ public class CalculateTenureCommand implements Command {
         this.service = service;
     }
 
+    private void listAllHods() {
+        var hods = service.getHods();
+        System.out.println("ID\tNAME");
+        for(var hod:hods) {
+            System.out.println(hod);
+        }
+    }
+    
     @Override
     public String execute() {
-        System.out.println("Enter Employee id:");
+        System.out.println("Enter Employee id: (Type -1 to list all Heads of Departments)");
         Scanner input = new Scanner(System.in);
         Long empId = Long.parseLong(input.nextLine());
+        if (empId == -1) {
+            listAllHods();
+            System.out.println("Select Employee id:");
+            empId = Long.parseLong(input.nextLine());
+        }
         return service.calculateTenure(empId);
     }
 

@@ -9,6 +9,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.sql.ConnectionEvent;
+
+import com.microsoft.sqlserver.jdbc.SQLServerResource_ja;
+
 public class DbService {
     private static final String URL = "jdbc:sqlserver://localhost;database=empdb;encrypt=true;trustServerCertificate=true";
     private static final String USER = "sa";
@@ -156,5 +160,22 @@ public class DbService {
             sq.printStackTrace();
         }
         return cities;
+    }
+    
+    public List<HodDTO> getHods() {
+        var hods = new ArrayList<HodDTO>();
+        try(Connection conn = DriverManager.getConnection(URL, USER, PASS)) {
+            String sql = "SELECT e.emp_id as emp_id, e.name as name FROM main.employees e JOIN main.dept_hods dh ON e.emp_id = dh.hod;";
+            try (PreparedStatement stmt = conn.prepareStatement(sql)) {
+                try (ResultSet results = stmt.executeQuery()) {
+                    while(results.next()) {
+                        hods.add(new HodDTO(results.getLong("emp_id"), results.getString("name")));
+                    }
+                }
+            }
+        } catch (SQLException sq) {
+            sq.printStackTrace();
+        }
+        return hods;
     }
 }
