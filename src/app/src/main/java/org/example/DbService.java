@@ -50,10 +50,18 @@ public class DbService {
                     while (results.next()) {
                         int months = results.getInt("tenure");
                         if (months == 1) {
-                            output.append(months + " month as head of department.");
+                            output.append(months + " month as head of ");
                         } else {
-                            output.append(months + " months as head of department.");
+                            output.append(months + " months as head of ");
                         }
+                    }
+                }
+            }
+            try (PreparedStatement stmt = conn.prepareStatement("SELECT d.name as name FROM main.departments d JOIN main.dept_hods dh ON d.dept_id = dh.dept_id WHERE dh.hod = ?")) {
+                stmt.setLong(1, empId);
+                try (ResultSet results = stmt.executeQuery()) {
+                    while(results.next()) {
+                        output.append(results.getString("name"));
                     }
                 }
             }

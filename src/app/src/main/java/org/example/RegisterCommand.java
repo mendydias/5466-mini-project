@@ -58,10 +58,6 @@ public class RegisterCommand implements Command {
         String name = input.nextLine();
         System.out.println("Role:");
         String role = input.nextLine();
-<<<<<<< HEAD
-        System.out.println("Department id:");
-        Long dept = Long.parseLong(input.nextLine());
-=======
         Long dept = -2L;
         while (dept == -2) {
             System.out.println("Department id: (Type -1 to list current departments)");
@@ -71,7 +67,6 @@ public class RegisterCommand implements Command {
                 dept = -2L;
             }
         }
->>>>>>> city-search
         System.out.println("House number:");
         String houseNum = input.nextLine();
         System.out.println("Street:");
